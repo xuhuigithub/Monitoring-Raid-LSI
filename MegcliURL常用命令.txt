@@ -1,0 +1,36 @@
+PD：Physical disks
+VD：Virtual disk
+
+/opt/MegaRAID/MegaCli/MegaCli64 -PDList -a0 -NoLog | grep -c "Enclosure Device ID"
+#查看适配器#0的物理磁盘数量
+
+/opt/MegaRAID/MegaCli/MegaCli64 -PDList -aAll -NoLog
+#查看PD信息来自于所有适配器#ALL
+
+/opt/MegaRAID/MegaCli/MegaCli64 -PDList -a0 -NoLog
+#查看PD信息来自于适配器#0
+
+/opt/MegaRAID/MegaCli/MegaCli64 -PDList -a0,1 -NoLog
+#查看PD信息来自于适配器#0 #1
+
+/opt/MegaRAID/MegaCli/MegaCli64 -PDList -aAll -NoLog | grep -Ei "(enclosure|slot)"
+#查看各个PD的enclosure device id 和 slot number（后边在指定PD时会用到）
+
+/opt/MegaRAID/MegaCli/MegaCli64 -pdInfo -PhysDrv[62:0] -a0
+#查看适配器0指定的PD的信息（PD enclosure device id为62 slot number 为 0）
+
+/opt/MegaRAID/MegaCli/MegaCli64 -pdInfo -PhysDrv[62:0] -a0 | grep -i Temp | awk -F ":" '{print  $2}' | awk -F "C" '{print $1}'
+#将单个指定的PD的温度过滤出来的例子
+
+/opt/MegaRAID/MegaCli/MegaCli64 -PdLocate -start -physdrv[252:2] -a0
+#点亮指定硬盘（定位）
+
+/opt/MegaRAID/MegaCli/MegaCli64 -pdgetmissing -a0
+#查看RAID阵列中掉线的盘
+
+/opt/MegaRAID/MegaCli/MegaCli64 -pdrbld -start -physdrv[12:10] -a0
+#手动开启rebuid
+
+/opt/MegaRAID/MegaCli/MegaCli64 -PDOffline -PhysDrv[62:0] -a0
+#下线硬盘
+

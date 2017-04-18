@@ -1,0 +1,18 @@
+PD: 8 Information
+Enclosure Device ID: 62		dapter 0: Device at Enclosure - 20, Slot - 2 is not found
+Slot Number: 7
+Drive's position: DiskGroup: 0, Span: 0, Arm: 7
+Enclosure position: N/A
+
+
+[root@node ~]# /opt/MegaRAID/MegaCli/MegaCli64 -PDList -aALL -Nolog | head -n 20
+                                     
+Adapter #0			适配器
+Enclosure Device ID: 62		附件ID
+Slot Number: 0			槽位号
+
+查看这一块物理硬盘的详细信息
+/opt/MegaRAID/MegaCli/MegaCli64 -pdInfo -PhysDrv[62:0] -a0
+
+
+p=os.popen('').read().split()

@@ -1,0 +1,4 @@
+磁带状态的变化，从拔盘，到插盘的过程中。
+Device |Normal|Damage|Rebuild|Normal
+Virtual Drive |Optimal|Degraded|Degraded|Optimal
+Physical Drive |Online|Failed –> Unconfigured|Rebuild|Online
